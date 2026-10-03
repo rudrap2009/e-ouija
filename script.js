@@ -28,7 +28,6 @@ class SpiritAudioEngine {
 
       const now = this.ctx.currentTime;
 
-      // Warm ambient sub-bass drone
       this.droneOsc1 = this.ctx.createOscillator();
       this.droneOsc1.type = 'sine';
       this.droneOsc1.frequency.setValueAtTime(54, now);
@@ -54,7 +53,6 @@ class SpiritAudioEngine {
       this.droneOsc1.start();
       this.droneOsc2.start();
 
-      // Master bus for dim haunted felt piano
       this.pianoMasterGain = this.ctx.createGain();
       this.pianoMasterGain.gain.setValueAtTime(0.035, now);
       this.pianoMasterGain.connect(this.ctx.destination);
@@ -618,18 +616,14 @@ class OuijaParlor {
     this.movePlanchetteToElement(homeNode, smooth);
   }
 
-  /* Exact Coordinate Extraction & Physics-Based Trajectory Glide */
   movePlanchetteToElement(targetEl, smooth = true) {
     if (!targetEl) return;
     
     const boardRect = this.boardContainer.getBoundingClientRect();
     const targetRect = targetEl.getBoundingClientRect();
 
-    // Exact pixel center coordinates of targeted letter relative to board
     const destX = (targetRect.left + targetRect.width / 2) - boardRect.left;
     const destY = (targetRect.top + targetRect.height / 2) - boardRect.top;
-
-    // Dynamic Physics: Calculate movement vector (deltaX, deltaY) to determine realistic drag tilt
     const deltaX = destX - this.currentPos.x;
     const deltaY = destY - this.currentPos.y;
     
@@ -644,7 +638,6 @@ class OuijaParlor {
       this.planchette.style.transition = 'none';
     }
 
-    // Apply coordinates (margin-top: -72px & margin-left: -45px align lens center exactly over destX, destY)
     this.planchette.style.left = `${destX}px`;
     this.planchette.style.top = `${destY}px`;
     this.planchette.style.transform = `rotate(${finalAngle}deg)`;
@@ -668,7 +661,6 @@ class OuijaParlor {
 
     const answer = spiritBrain.consultOracle(question);
 
-    // Pre-travel agitation shiver
     for (let i = 0; i < 3; i++) {
       const angle = (Math.random() * 6 - 3);
       this.planchette.style.transform = `scale(1.02) rotate(${angle}deg)`;
@@ -681,7 +673,6 @@ class OuijaParlor {
     await this.concludeSession(answer);
   }
 
-  /* Target Identification, Trajectory Glide, and Synchronized Real-Time Inking */
   async spellOutSequence(response) {
     const glideDuration = 850;
     let tokens = [];
@@ -704,31 +695,25 @@ class OuijaParlor {
         continue;
       }
 
-      // Target Identification by explicit node ID (#node-A, #node-YES, etc.)
       let targetEl = document.getElementById(`node-${char}`);
       if (!targetEl && /^[A-Z0-9]$/.test(char)) {
         targetEl = document.querySelector(`[data-char="${char}"]`);
       }
 
       if (targetEl) {
-        // Smooth Trajectory Glide with drag physics
         this.movePlanchetteToElement(targetEl, true);
 
-        // Wait for planchette travel animation to complete
         await this.delay(glideDuration);
 
-        // Letter Highlight: Add .active to pulse and scale character with vivid crimson glow
         targetEl.classList.add('active');
         spiritAudio.playLetterChime(char);
 
-        // Real-Time Parchment Inking: Bloom letter into calling slip
         const letterSpan = document.createElement('span');
         letterSpan.className = 'bloomed-letter';
         letterSpan.textContent = char;
         this.manifestedAnswer.appendChild(letterSpan);
         spiritAudio.playQuillScratch();
 
-        // Hold illumination for 1.15 seconds so user can clearly see through the viewing glass
         await this.delay(1150);
 
         targetEl.classList.remove('active');
@@ -740,7 +725,6 @@ class OuijaParlor {
 
     await this.delay(glideDuration * 0.7);
 
-    // Glide planchette to GOODBYE node to seal communion
     const goodbyeTarget = document.getElementById('node-GOODBYE');
     if (goodbyeTarget && upper !== 'GOODBYE') {
       this.movePlanchetteToElement(goodbyeTarget, true);
@@ -759,7 +743,6 @@ class OuijaParlor {
 
     this.manifestedLabel.textContent = "The ether hath spoken";
 
-    // Re-enable question line for subsequent inquiries
     this.questionInput.disabled = false;
     this.inquireBtn.disabled = false;
     this.questionInput.value = '';
