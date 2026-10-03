@@ -8,85 +8,295 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Rye&family=IM+Fell+English+SC&family=Spectral:ital,wght@0,300;0,400;1,400;1,600&family=Alex+Brush&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="table-surface min-h-screen flex flex-col justify-between items-center relative selection:bg-slate-900 selection:text-slate-100 p-2 sm:p-5 overflow-hidden">
+
+  <div id="covenantModal" class="covenant-overlay fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
+    <div class="parchment-affidavit w-full max-w-2xl rounded-sm p-6 sm:p-10 text-[#200e03] relative my-auto select-none border border-[#3b1d0a]">
+      
+      <div class="absolute top-4 right-4 sm:top-7 sm:right-7 border-2 border-dashed border-[#731c1c]/55 rounded p-1.5 sm:p-2 transform rotate-6 pointer-events-none">
+        <div class="text-[9px] sm:text-[10px] font-fell font-bold tracking-[0.2em] text-[#731c1c]/75 uppercase text-center leading-tight">
+          Archival Record<br>
+          <span class="text-xs sm:text-sm font-black">No. 1894-B</span><br>
+          Metaphysical Quarantine
+        </div>
+      </div>
+
+      <div class="text-center pb-4 mb-4 border-b-2 border-[#45230a]/40">
+        <div class="text-[10px] sm:text-xs font-fell tracking-[0.28em] uppercase text-[#4e2a0f] mb-1">
+          The Society for Psychical Research &amp; Communion
+        </div>
+        <h1 class="text-xl sm:text-3xl font-ouija font-black tracking-widest text-[#1c0a02] uppercase">
+          Affidavit of Peril
+        </h1>
+        <div class="text-[9px] sm:text-[11px] font-fell italic text-[#4a260d] mt-1 tracking-wider">
+          Instrument of Express Waiver &amp; Total Metaphysical Indemnity
+        </div>
+      </div>
+
+      <div class="space-y-3 sm:space-y-4 text-xs sm:text-sm leading-relaxed text-[#261105] font-spectral">
+        <p class="font-semibold text-center italic text-[#6a1212]">
+          "Notice to all who knock upon this veil: What answers is rarely what was summoned."
+        </p>
+        
+        <div class="text-justify bg-[#c09d6c]/40 p-3 sm:p-4 rounded border border-[#5a3414]/30 space-y-2">
+          <p>
+            <strong class="font-fell tracking-wide uppercase text-[#351704]">Clause I. Autonomous Resonance:</strong> 
+            The instrument herein relies neither upon parlour novelty nor artificial facsimile. It functions upon the direct extraction of subtle ideomotor nerve resonance and spontaneous geomagnetic aperture. Visitors are solemnly advised that inquiries conducted past twilight have frequently provoked uninvited manifestations.
+          </p>
+
+          <p>
+            <strong class="font-fell tracking-wide uppercase text-[#351704]">Clause II. Waiver of Psychological Injury:</strong> 
+            The operators, keepers, and spiritual archivists of this domain maintain <span class="underline decoration-[#6e1414] font-semibold">absolute indemnity</span> against all subsequent afflictions, including but not limited to: severe hypnagogic paralysis, spontaneous acoustic whispers within the domestic threshold, unprovoked animal distress, cold focal anomalies, or persistent nocturnal observers.
+          </p>
+
+          <p>
+            <strong class="font-fell tracking-wide uppercase text-[#351704]">Clause III. Severance &amp; Departure:</strong> 
+            You expressly contract to heed all spiritual counsel. When the planchette departs toward <span class="font-ouija font-bold text-[#620f0f]">GOOD BYE</span>, the communion is irrevocably sealed. To linger or demand further intercourse once dismissed is undertaken at thine own singular peril.
+          </p>
+        </div>
+
+        <label class="flex items-start gap-3 mt-4 cursor-pointer pt-2 group">
+          <input type="checkbox" id="covenantCheck" class="affidavit-checkbox mt-0.5" />
+          <span class="text-xs sm:text-sm font-fell tracking-wide text-[#2b1204] group-hover:text-[#641111] transition-colors leading-snug">
+            I, of sound mind and mortal volition, do hereby accept absolute culpability for whatever presence is summoned across this threshold, fully releasing the curators from all spiritual and temporal recourse.
+          </span>
+        </label>
+      </div>
+
+      <div class="mt-6 flex flex-col items-center justify-center pt-2">
+        <button id="breakSealBtn" disabled class="wax-seal-btn text-[#edd6b6] font-fell font-bold tracking-[0.2em] text-xs sm:text-sm py-3 px-8 rounded-full flex items-center gap-2 border border-[#8a2a2a]/60 uppercase shadow-2xl">
+          <svg class="w-4 h-4 text-[#e0b986]" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C7.58 2 4 5.58 4 10C4 13.15 5.82 15.86 8.5 17.18V20C8.5 20.55 8.95 21 9.5 21H14.5C15.05 21 15.5 20.55 15.5 20V17.18C18.18 15.86 20 13.15 20 10C20 5.58 16.42 2 12 2ZM9 11C8.17 11 7.5 10.33 7.5 9.5C7.5 8.67 8.17 8 9 8C9.83 8 10.5 8.67 10.5 9.5C10.5 10.33 9.83 11 9 11ZM15 11C14.17 11 13.5 10.33 13.5 9.5C13.5 8.67 14.17 8 15 8C15.83 8 16.5 8.67 16.5 9.5C16.5 10.33 15.83 11 15 11Z"/>
+          </svg>
+          <span id="breakSealText">Confirm Affidavit Above</span>
+        </button>
+        <span class="text-[9px] font-fell tracking-widest uppercase text-[#452207]/80 mt-2">
+          A pact once sealed cannot be unmade
+        </span>
+      </div>
+
+    </div>
+  </div>
+
   <div id="candleOverlay" class="candle-lighting fixed inset-0 pointer-events-none z-10"></div>
   <div id="shadowDarkness" class="shadow-darkness fixed inset-0 z-12"></div>
+  <canvas id="emberCanvas" class="ember-canvas"></canvas>
 
   <main class="relative z-20 w-full max-w-4xl my-auto flex flex-col items-center select-none pt-2 sm:pt-4">
+
     <div class="w-full flex justify-between px-3 sm:px-8 -mb-6 sm:-mb-5 z-30 pointer-events-auto">
-      <div id="candleLeft" class="candle-touch-zone flex flex-col items-center" title="Snuff or light candle">
-        <div class="relative w-6 h-8 flex items-end justify-center">
-          <div id="candleLeftFlame" class="relative w-4 h-7">
-            <div class="absolute inset-0 bg-gradient-to-t from-red-600 via-amber-400 to-yellow-100 rounded-full blur-[0.8px] flame-anim shadow-[0_0_16px_#e67300]"></div>
-            <div class="absolute top-1 left-1.5 w-1 h-3.5 bg-white rounded-full opacity-80"></div>
+      
+      <div id="candleLeft" class="candle-stand candle-stand-left candle-touch-zone" title="Snuff or light candle">
+        <div class="candle-head">
+          <div id="candleLeftFlame" class="candle-flame-wrap">
+            <div class="flame-glow-aura"></div>
+            <div class="flame-particle-spark spark-1"></div>
+            <div class="flame-particle-spark spark-2"></div>
+            <div class="flame-body-container flame-anim-left">
+              <div class="flame-envelope"></div>
+              <div class="flame-mantle"></div>
+              <div class="flame-core"></div>
+              <div class="flame-blue-base"></div>
+            </div>
           </div>
-          <div id="candleLeftSmoke" class="absolute top-0 hidden w-4 h-8 text-amber-200/40 pointer-events-none">
-            <svg viewBox="0 0 20 40" fill="currentColor"><path d="M10 40 Q4 30 11 20 Q17 10 9 0" stroke="rgba(210,180,140,0.5)" stroke-width="2" fill="none"/></svg>
+
+          <div id="candleLeftSmoke" class="candle-smoke-wrap hidden pointer-events-none">
+            <svg class="smoke-trail smoke-trail-1" viewBox="0 0 50 120" fill="none">
+              <path d="M25 115 Q18 90 28 65 Q38 40 22 10" stroke="rgba(225, 205, 185, 0.7)" stroke-width="3" stroke-linecap="round" />
+            </svg>
+            <svg class="smoke-trail smoke-trail-2" viewBox="0 0 50 120" fill="none">
+              <path d="M25 115 Q33 95 20 70 Q12 45 28 15" stroke="rgba(195, 175, 155, 0.5)" stroke-width="2.5" stroke-linecap="round" />
+            </svg>
+            <svg class="smoke-trail smoke-trail-3" viewBox="0 0 50 120" fill="none">
+              <path d="M25 115 Q22 80 32 55 Q36 30 25 5" stroke="rgba(240, 225, 210, 0.35)" stroke-width="2" stroke-linecap="round" />
+            </svg>
           </div>
         </div>
-        <div class="w-1.5 h-2.5 bg-neutral-950"></div>
-        <div class="w-5 h-16 bg-gradient-to-b from-[#f2e6cf] via-[#ab9370] to-[#2e1d0f] rounded-t-sm shadow-md border-t border-amber-100/20"></div>
-        <div class="w-8 h-3 bg-gradient-to-r from-[#452b0c] via-[#a8752e] to-[#362108] rounded-t-sm"></div>
-        <div class="w-12 h-2.5 bg-gradient-to-r from-[#291704] via-[#754e19] to-[#1c0f02] rounded-sm shadow-lg"></div>
+
+        <div class="candle-wick-assembly">
+          <div class="candle-wick-cord wick-curve-left"></div>
+          <div id="candleLeftEmber" class="candle-wick-ember"></div>
+        </div>
+
+        <div class="candle-wax-pillar">
+          <div class="wax-crater-pool">
+            <div class="wax-melt-gloss"></div>
+          </div>
+          <div class="wax-inner-glow"></div>
+          <div class="wax-drip drip-left-1"></div>
+          <div class="wax-drip drip-left-2"></div>
+          <div class="wax-drip drip-right-1"></div>
+          <div class="wax-drip drip-front-tear"></div>
+        </div>
+
+        <div class="chamberstick-assembly">
+          <div class="chamberstick-bobeche">
+            <div class="bobeche-lip"></div>
+            <div class="bobeche-dish"></div>
+          </div>
+          <div class="chamberstick-stem">
+            <div class="stem-upper-collar"></div>
+            <div class="stem-baluster-bulb"></div>
+            <div class="stem-fluted-ring"></div>
+          </div>
+          <div class="chamberstick-saucer">
+            <div class="saucer-tier-1"></div>
+            <div class="saucer-tier-2"></div>
+            <div class="saucer-rim-bevel"></div>
+          </div>
+          <div class="chamberstick-handle handle-pos-left">
+            <div class="handle-thumb-rest"></div>
+            <div class="handle-loop"></div>
+          </div>
+          <div class="chamberstick-table-shadow"></div>
+        </div>
       </div>
 
-      <div id="candleRight" class="candle-touch-zone flex flex-col items-center" title="Snuff or light candle">
-        <div class="relative w-6 h-8 flex items-end justify-center">
-          <div id="candleRightFlame" class="relative w-4 h-7">
-            <div class="absolute inset-0 bg-gradient-to-t from-red-600 via-amber-400 to-yellow-100 rounded-full blur-[0.8px] flame-anim shadow-[0_0_16px_#e67300]" style="animation-delay:-0.09s;"></div>
-            <div class="absolute top-1 left-1.5 w-1 h-3.5 bg-white rounded-full opacity-80"></div>
+      <div id="candleRight" class="candle-stand candle-stand-right candle-touch-zone" title="Snuff or light candle">
+        <div class="candle-head">
+          <div id="candleRightFlame" class="candle-flame-wrap">
+            <div class="flame-glow-aura"></div>
+            <div class="flame-particle-spark spark-1" style="animation-delay: -1.5s;"></div>
+            <div class="flame-particle-spark spark-2" style="animation-delay: -2.8s;"></div>
+            <div class="flame-body-container flame-anim-right">
+              <div class="flame-envelope"></div>
+              <div class="flame-mantle"></div>
+              <div class="flame-core"></div>
+              <div class="flame-blue-base"></div>
+            </div>
           </div>
-          <div id="candleRightSmoke" class="absolute top-0 hidden w-4 h-8 text-amber-200/40 pointer-events-none">
-            <svg viewBox="0 0 20 40" fill="currentColor"><path d="M10 40 Q4 30 11 20 Q17 10 9 0" stroke="rgba(210,180,140,0.5)" stroke-width="2" fill="none"/></svg>
+
+          <div id="candleRightSmoke" class="candle-smoke-wrap hidden pointer-events-none">
+            <svg class="smoke-trail smoke-trail-1" viewBox="0 0 50 120" fill="none">
+              <path d="M25 115 Q32 90 22 65 Q12 40 28 10" stroke="rgba(225, 205, 185, 0.7)" stroke-width="3" stroke-linecap="round" />
+            </svg>
+            <svg class="smoke-trail smoke-trail-2" viewBox="0 0 50 120" fill="none">
+              <path d="M25 115 Q17 95 30 70 Q38 45 22 15" stroke="rgba(195, 175, 155, 0.5)" stroke-width="2.5" stroke-linecap="round" />
+            </svg>
+            <svg class="smoke-trail smoke-trail-3" viewBox="0 0 50 120" fill="none">
+              <path d="M25 115 Q28 80 18 55 Q14 30 25 5" stroke="rgba(240, 225, 210, 0.35)" stroke-width="2" stroke-linecap="round" />
+            </svg>
           </div>
         </div>
-        <div class="w-1.5 h-2.5 bg-neutral-950"></div>
-        <div class="w-5 h-16 bg-gradient-to-b from-[#f2e6cf] via-[#ab9370] to-[#2e1d0f] rounded-t-sm shadow-md border-t border-amber-100/20"></div>
-        <div class="w-8 h-3 bg-gradient-to-r from-[#452b0c] via-[#a8752e] to-[#362108] rounded-t-sm"></div>
-        <div class="w-12 h-2.5 bg-gradient-to-r from-[#291704] via-[#754e19] to-[#1c0f02] rounded-sm shadow-lg"></div>
+
+        <div class="candle-wick-assembly">
+          <div class="candle-wick-cord wick-curve-right"></div>
+          <div id="candleRightEmber" class="candle-wick-ember"></div>
+        </div>
+
+        <div class="candle-wax-pillar">
+          <div class="wax-crater-pool">
+            <div class="wax-melt-gloss"></div>
+          </div>
+          <div class="wax-inner-glow"></div>
+          <div class="wax-drip drip-left-1" style="height: 32px;"></div>
+          <div class="wax-drip drip-right-1" style="height: 22px;"></div>
+          <div class="wax-drip drip-right-2"></div>
+          <div class="wax-drip drip-front-tear" style="left: 12px; height: 14px;"></div>
+        </div>
+
+        <div class="chamberstick-assembly">
+          <div class="chamberstick-bobeche">
+            <div class="bobeche-lip"></div>
+            <div class="bobeche-dish"></div>
+          </div>
+          <div class="chamberstick-stem">
+            <div class="stem-upper-collar"></div>
+            <div class="stem-baluster-bulb"></div>
+            <div class="stem-fluted-ring"></div>
+          </div>
+          <div class="chamberstick-saucer">
+            <div class="saucer-tier-1"></div>
+            <div class="saucer-tier-2"></div>
+            <div class="saucer-rim-bevel"></div>
+          </div>
+          <div class="chamberstick-handle handle-pos-right">
+            <div class="handle-thumb-rest"></div>
+            <div class="handle-loop"></div>
+          </div>
+          <div class="chamberstick-table-shadow"></div>
+        </div>
       </div>
+
     </div>
 
     <div id="boardContainer" class="ouija-board w-full rounded-lg p-4 sm:p-6 text-[#d4b382] select-none relative overflow-hidden aspect-[16/10.2] flex flex-col justify-between">
+      
       <svg class="absolute inset-0 w-full h-full pointer-events-none z-10" viewBox="0 0 1000 640" preserveAspectRatio="none">
-        <rect x="18" y="18" width="964" height="604" rx="4" class="board-engraving-line" stroke-opacity="0.45"/>
-        <path d="M 55,36 L 945,36 A 20,20 0 0,0 964,55 L 964,585 A 20,20 0 0,0 945,604 L 55,604 A 20,20 0 0,0 36,585 L 36,55 A 20,20 0 0,0 55,36 Z" class="board-engraving-line" stroke-opacity="0.6"/>
+        <rect x="18" y="18" width="964" height="604" rx="4" class="board-engraving-line" stroke-opacity="0.45" />
+        
+        <path d="
+          M 55,36 
+          L 945,36 
+          A 20,20 0 0,0 964,55 
+          L 964,585 
+          A 20,20 0 0,0 945,604 
+          L 55,604 
+          A 20,20 0 0,0 36,585 
+          L 36,55 
+          A 20,20 0 0,0 55,36 Z" 
+          class="board-engraving-line" stroke-opacity="0.6" />
+
         <g class="board-engraving-line" stroke-opacity="0.4">
-          <circle cx="50" cy="50" r="10"/><line x1="38" y1="50" x2="62" y2="50"/><line x1="50" y1="38" x2="50" y2="62"/>
-          <circle cx="950" cy="50" r="10"/><line x1="938" y1="50" x2="962" y2="50"/><line x1="950" y1="38" x2="950" y2="62"/>
-          <circle cx="50" cy="590" r="10"/><line x1="38" y1="590" x2="62" y2="590"/><line x1="50" y1="578" x2="50" y2="602"/>
-          <circle cx="950" cy="590" r="10"/><line x1="938" y1="590" x2="962" y2="590"/><line x1="950" y1="578" x2="950" y2="602"/>
+          <circle cx="50" cy="50" r="10" />
+          <line x1="38" y1="50" x2="62" y2="50" />
+          <line x1="50" y1="38" x2="50" y2="62" />
+
+          <circle cx="950" cy="50" r="10" />
+          <line x1="938" y1="50" x2="962" y2="50" />
+          <line x1="950" y1="38" x2="950" y2="62" />
+
+          <circle cx="50" cy="590" r="10" />
+          <line x1="38" y1="590" x2="62" y2="590" />
+          <line x1="50" y1="578" x2="50" y2="602" />
+
+          <circle cx="950" cy="590" r="10" />
+          <line x1="938" y1="590" x2="962" y2="590" />
+          <line x1="950" y1="578" x2="950" y2="602" />
         </g>
-        <path d="M 410,132 Q 500,140 590,132" fill="none" stroke="#5a3818" stroke-width="1.3" stroke-linecap="round"/>
-        <circle cx="500" cy="136" r="2.2" fill="#8f6532"/>
-        <path d="M 405,532 Q 500,538 595,532" fill="none" stroke="#5a3818" stroke-width="1.3" stroke-linecap="round"/>
+
+        <path d="M 410,132 Q 500,140 590,132" fill="none" stroke="#5a3818" stroke-width="1.3" stroke-linecap="round" />
+        <circle cx="500" cy="136" r="2.2" fill="#8f6532" />
+
+        <path d="M 405,532 Q 500,538 595,532" fill="none" stroke="#5a3818" stroke-width="1.3" stroke-linecap="round" />
       </svg>
 
       <div class="absolute left-1/2 -translate-x-1/2 top-[10%] text-center pointer-events-none z-20">
-        <h1 class="font-ouija text-3xl sm:text-5xl md:text-6xl font-normal tracking-[0.24em] text-[#dfc08f] drop-shadow-[0_2px_4px_rgba(0,0,0,0.85)]">OUIJA</h1>
+        <h1 class="font-ouija text-3xl sm:text-5xl md:text-6xl font-normal tracking-[0.24em] text-[#dfc08f] drop-shadow-[0_2px_4px_rgba(0,0,0,0.85)]">
+          OUIJA
+        </h1>
       </div>
 
       <div class="absolute left-[13%] sm:left-[17%] top-[12%] flex flex-col items-center z-20">
         <div class="w-10 h-10 sm:w-14 sm:h-14 text-[#9c7542] relative">
           <svg viewBox="0 0 100 100" fill="none" stroke="currentColor">
-            <circle cx="50" cy="50" r="22" stroke-width="2"/><circle cx="50" cy="50" r="28" stroke-width="1" stroke-dasharray="3,3"/>
-            <path d="M50,16 L50,8 M50,84 L50,92 M16,50 L8,50 M84,50 L92,50 M26,26 L20,20 M74,74 L80,80 M26,74 L20,80 M74,26 L80,20" stroke-width="1.8" stroke-linecap="round"/>
-            <path d="M42,46 Q50,49 58,46" stroke-width="1.5"/><path d="M45,56 Q50,59 55,56" stroke-width="1.5"/>
+            <circle cx="50" cy="50" r="22" stroke-width="2" />
+            <circle cx="50" cy="50" r="28" stroke-width="1" stroke-dasharray="3,3" />
+            <path d="M50,16 L50,8 M50,84 L50,92 M16,50 L8,50 M84,50 L92,50 M26,26 L20,20 M74,74 L80,80 M26,74 L20,80 M74,26 L80,20" stroke-width="1.8" stroke-linecap="round" />
+            <path d="M42,46 Q50,49 58,46" stroke-width="1.5" />
+            <path d="M45,56 Q50,59 55,56" stroke-width="1.5" />
           </svg>
         </div>
-        <span id="node-YES" data-char="YES" class="board-target font-ouija text-xl sm:text-3xl font-bold tracking-widest text-[#dfc08f] mt-1 static translate-x-0 translate-y-0">YES</span>
+        <span id="node-YES" data-char="YES" class="board-target font-ouija text-xl sm:text-3xl font-bold tracking-widest text-[#dfc08f] mt-1 static translate-x-0 translate-y-0">
+          YES
+        </span>
       </div>
 
       <div class="absolute right-[13%] sm:right-[17%] top-[12%] flex flex-col items-center z-20">
         <div class="w-10 h-10 sm:w-14 sm:h-14 text-[#9c7542] relative">
           <svg viewBox="0 0 100 100" fill="currentColor">
-            <path d="M60 18 C42 22 28 38 30 58 C32 76 46 90 64 92 C40 94 20 76 20 52 C20 28 38 14 60 18 Z" opacity="0.88"/>
-            <circle cx="48" cy="40" r="1.8" fill="#140803"/><circle cx="54" cy="52" r="1.4" fill="#140803"/><circle cx="44" cy="64" r="1.6" fill="#140803"/>
+            <path d="M60 18 C42 22 28 38 30 58 C32 76 46 90 64 92 C40 94 20 76 20 52 C20 28 38 14 60 18 Z" opacity="0.88" />
+            <circle cx="48" cy="40" r="1.8" fill="#140803" />
+            <circle cx="54" cy="52" r="1.4" fill="#140803" />
+            <circle cx="44" cy="64" r="1.6" fill="#140803" />
           </svg>
         </div>
-        <span id="node-NO" data-char="NO" class="board-target font-ouija text-xl sm:text-3xl font-bold tracking-widest text-[#dfc08f] mt-1 static translate-x-0 translate-y-0">NO</span>
+        <span id="node-NO" data-char="NO" class="board-target font-ouija text-xl sm:text-3xl font-bold tracking-widest text-[#dfc08f] mt-1 static translate-x-0 translate-y-0">
+          NO
+        </span>
       </div>
 
       <span id="node-A" data-char="A" class="board-target font-ouija text-lg sm:text-2xl md:text-3xl" style="left: 17.5%; top: 41%;">A</span>
@@ -102,12 +312,14 @@
       <span id="node-K" data-char="K" class="board-target font-ouija text-lg sm:text-2xl md:text-3xl" style="left: 73.5%; top: 35.8%;">K</span>
       <span id="node-L" data-char="L" class="board-target font-ouija text-lg sm:text-2xl md:text-3xl" style="left: 78.8%; top: 38.8%;">L</span>
       <span id="node-M" data-char="M" class="board-target font-ouija text-lg sm:text-2xl md:text-3xl" style="left: 84.0%; top: 42.5%;">M</span>
+
       <span id="node-N" data-char="N" class="board-target font-ouija text-lg sm:text-2xl md:text-3xl" style="left: 18.0%; top: 51.5%;">N</span>
       <span id="node-O" data-char="O" class="board-target font-ouija text-lg sm:text-2xl md:text-3xl" style="left: 23.2%; top: 48.8%;">O</span>
       <span id="node-P" data-char="P" class="board-target font-ouija text-lg sm:text-2xl md:text-3xl" style="left: 28.8%; top: 46.5%;">P</span>
       <span id="node-Q" data-char="Q" class="board-target font-ouija text-lg sm:text-2xl md:text-3xl" style="left: 34.5%; top: 45.2%;">Q</span>
       <span id="node-R" data-char="R" class="board-target font-ouija text-lg sm:text-2xl md:text-3xl" style="left: 40.2%; top: 44.5%;">R</span>
       <span id="node-S" data-char="S" class="board-target font-ouija text-lg sm:text-2xl md:text-3xl" style="left: 45.8%; top: 44.5%;">S</span>
+      
       <span id="node-T" data-char="T" class="board-target font-ouija text-lg sm:text-2xl md:text-3xl" style="left: 54.2%; top: 44.5%;">T</span>
       <span id="node-U" data-char="U" class="board-target font-ouija text-lg sm:text-2xl md:text-3xl" style="left: 59.8%; top: 44.5%;">U</span>
       <span id="node-V" data-char="V" class="board-target font-ouija text-lg sm:text-2xl md:text-3xl" style="left: 65.5%; top: 45.5%;">V</span>
@@ -130,7 +342,9 @@
       </div>
 
       <div class="absolute left-1/2 -translate-x-1/2 bottom-[10.5%] text-center z-20">
-        <div id="node-GOODBYE" data-char="GOODBYE" class="board-target font-ouija text-2xl sm:text-4xl md:text-5xl tracking-[0.22em] text-[#dfc08f] static translate-x-0 translate-y-0">GOOD BYE</div>
+        <div id="node-GOODBYE" data-char="GOODBYE" class="board-target font-ouija text-2xl sm:text-4xl md:text-5xl tracking-[0.22em] text-[#dfc08f] static translate-x-0 translate-y-0">
+          GOOD BYE
+        </div>
       </div>
 
       <div id="node-HOME" class="absolute left-1/2 top-[47%] -translate-x-1/2 -translate-y-1/2 w-4 h-4 pointer-events-none opacity-0"></div>
@@ -139,35 +353,71 @@
         <svg viewBox="0 0 100 130" class="w-full h-full drop-shadow-[0_16px_28px_rgba(0,0,0,0.95)]">
           <defs>
             <radialGradient id="planchetteWood" cx="48%" cy="42%" r="65%">
-              <stop offset="0%" stop-color="#542810"/><stop offset="50%" stop-color="#2c1205"/><stop offset="90%" stop-color="#160802"/><stop offset="100%" stop-color="#090301"/>
+              <stop offset="0%" stop-color="#542810"/>
+              <stop offset="50%" stop-color="#2c1205"/>
+              <stop offset="90%" stop-color="#160802"/>
+              <stop offset="100%" stop-color="#090301"/>
             </radialGradient>
+            
             <linearGradient id="planchetteBrassEdge" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#996f33"/><stop offset="50%" stop-color="#4f3214"/><stop offset="100%" stop-color="#241407"/>
+              <stop offset="0%" stop-color="#996f33"/>
+              <stop offset="50%" stop-color="#4f3214"/>
+              <stop offset="100%" stop-color="#241407"/>
             </linearGradient>
+
             <radialGradient id="lensAperture" cx="45%" cy="45%" r="60%">
-              <stop offset="0%" stop-color="rgba(255,255,255,0.18)"/><stop offset="50%" stop-color="rgba(230,200,160,0.03)"/><stop offset="95%" stop-color="rgba(30,18,8,0.2)"/><stop offset="100%" stop-color="rgba(15,8,3,0.4)"/>
+              <stop offset="0%" stop-color="rgba(255,255,255,0.18)"/>
+              <stop offset="50%" stop-color="rgba(230,200,160,0.03)"/>
+              <stop offset="95%" stop-color="rgba(30,18,8,0.2)"/>
+              <stop offset="100%" stop-color="rgba(15,8,3,0.4)"/>
             </radialGradient>
           </defs>
-          <path d="M 50,6 C 72,28 92,62 90,98 C 88,118 72,125 50,118 C 28,125 12,118 10,98 C 8,62 28,28 50,6 Z" fill="url(#planchetteWood)" stroke="url(#planchetteBrassEdge)" stroke-width="1.8"/>
-          <path d="M 50,14 C 68,34 84,65 82,95 C 80,110 68,116 50,111 C 32,116 20,110 18,95 C 16,65 32,34 50,14 Z" fill="none" stroke="#784e20" stroke-width="1.0" stroke-opacity="0.75"/>
-          <circle cx="50" cy="18" r="2.2" fill="#a67c3b" stroke="#1c0b02" stroke-width="0.8"/>
-          <circle cx="26" cy="106" r="2.2" fill="#a67c3b" stroke="#1c0b02" stroke-width="0.8"/>
-          <circle cx="74" cy="106" r="2.2" fill="#a67c3b" stroke="#1c0b02" stroke-width="0.8"/>
-          <circle cx="50" cy="72" r="21" fill="none" stroke="#855f26" stroke-width="1.5"/>
-          <circle cx="50" cy="72" r="18" fill="none" stroke="#3b240c" stroke-width="1.0"/>
-          <circle cx="50" cy="72" r="17.5" fill="url(#lensAperture)"/>
-          <circle cx="50" cy="72" r="8.5" fill="none" stroke="rgba(215, 175, 100, 0.5)" stroke-width="0.75"/>
-          <line x1="50" y1="58" x2="50" y2="86" stroke="rgba(215, 175, 100, 0.45)" stroke-width="0.75" stroke-dasharray="1.5,1.5"/>
-          <line x1="36" y1="72" x2="64" y2="72" stroke="rgba(215, 175, 100, 0.45)" stroke-width="0.75" stroke-dasharray="1.5,1.5"/>
-          <circle cx="50" cy="72" r="1.5" fill="#dfb368"/>
-          <ellipse cx="44" cy="65" rx="5" ry="2.5" transform="rotate(-35 44 65)" fill="rgba(255,255,255,0.22)"/>
+
+          <path d="
+            M 50,6 
+            C 72,28 92,62 90,98 
+            C 88,118 72,125 50,118 
+            C 28,125 12,118 10,98 
+            C 8,62 28,28 50,6 Z" 
+            fill="url(#planchetteWood)" 
+            stroke="url(#planchetteBrassEdge)" 
+            stroke-width="1.8" />
+
+          <path d="
+            M 50,14 
+            C 68,34 84,65 82,95 
+            C 80,110 68,116 50,111 
+            C 32,116 20,110 18,95 
+            C 16,65 32,34 50,14 Z" 
+            fill="none" 
+            stroke="#784e20" 
+            stroke-width="1.0" 
+            stroke-opacity="0.75" />
+
+          <circle cx="50" cy="18" r="2.2" fill="#a67c3b" stroke="#1c0b02" stroke-width="0.8" />
+          <circle cx="26" cy="106" r="2.2" fill="#a67c3b" stroke="#1c0b02" stroke-width="0.8" />
+          <circle cx="74" cy="106" r="2.2" fill="#a67c3b" stroke="#1c0b02" stroke-width="0.8" />
+          <circle cx="50" cy="72" r="21" fill="none" stroke="#855f26" stroke-width="1.5" />
+          <circle cx="50" cy="72" r="18" fill="none" stroke="#3b240c" stroke-width="1.0" />
+
+          <circle cx="50" cy="72" r="17.5" fill="url(#lensAperture)" />
+          
+          <circle cx="50" cy="72" r="8.5" fill="none" stroke="rgba(215, 175, 100, 0.5)" stroke-width="0.75" />
+          <line x1="50" y1="58" x2="50" y2="86" stroke="rgba(215, 175, 100, 0.45)" stroke-width="0.75" stroke-dasharray="1.5,1.5" />
+          <line x1="36" y1="72" x2="64" y2="72" stroke="rgba(215, 175, 100, 0.45)" stroke-width="0.75" stroke-dasharray="1.5,1.5" />
+          <circle cx="50" cy="72" r="1.5" fill="#dfb368" />
+
+          <ellipse cx="44" cy="65" rx="5" ry="2.5" transform="rotate(-35 44 65)" fill="rgba(255,255,255,0.22)" />
         </svg>
       </div>
+
     </div>
+
   </main>
 
   <footer class="relative z-30 w-full max-w-xl pb-2 sm:pb-4 px-3">
     <div class="calling-slip rounded-md p-3 sm:p-4 text-[#241205]">
+      
       <div class="flex items-center justify-between gap-2 border-b border-[#5a3818]/40 pb-1 mb-2">
         <span class="font-script text-lg sm:text-xl text-[#311604] leading-none">Inquire of the silence...</span>
         <svg class="w-4 h-4 text-[#4a2b10]/80 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
@@ -183,11 +433,21 @@
       </div>
       
       <div id="inputRow" class="flex items-center gap-2">
-        <input id="questionInput" type="text" maxlength="120" placeholder="Whisper thy question and press Enter..." class="w-full bg-transparent border-none text-[#1e0d02] font-fell text-sm sm:text-base placeholder-[#5c3e21]/75 focus:outline-none" autocomplete="off"/>
+        <input 
+          id="questionInput" 
+          type="text" 
+          maxlength="120"
+          placeholder="Whisper thy question and press Enter..." 
+          class="w-full bg-transparent border-none text-[#1e0d02] font-fell text-sm sm:text-base placeholder-[#5c3e21]/75 focus:outline-none"
+          autocomplete="off"
+        />
         <button id="inquireBtn" class="opacity-80 hover:opacity-100 p-1 text-[#311604] transition-transform active:scale-95 flex-shrink-0" title="Inquire">
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M5 13h11.86l-5.43 5.43 1.42 1.42L21.14 12l-8.29-8.85-1.42 1.42L16.86 11H5v2z"/></svg>
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 13h11.86l-5.43 5.43 1.42 1.42L21.14 12l-8.29-8.85-1.42 1.42L16.86 11H5v2z"/>
+          </svg>
         </button>
       </div>
+
     </div>
   </footer>
 
