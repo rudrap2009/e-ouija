@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ouija Board</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rye&family=IM+Fell+English+SC&family=Spectral:ital,wght@0,300;0,400;1,400;1,600&family=Alex+Brush&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="table-surface min-h-screen flex flex-col justify-between items-center relative selection:bg-slate-900 selection:text-slate-100 p-2 sm:p-5 overflow-hidden">
+  <div id="candleOverlay" class="candle-lighting fixed inset-0 pointer-events-none z-10"></div>
+  <div id="shadowDarkness" class="shadow-darkness fixed inset-0 z-12"></div>
+
+  <main class="relative z-20 w-full max-w-4xl my-auto flex flex-col items-center select-none pt-2 sm:pt-4">
+    <div class="w-full flex justify-between px-3 sm:px-8 -mb-6 sm:-mb-5 z-30 pointer-events-auto">
+      <div id="candleLeft" class="candle-touch-zone flex flex-col items-center" title="Snuff or light candle">
+        <div class="relative w-6 h-8 flex items-end justify-center">
+          <div id="candleLeftFlame" class="relative w-4 h-7">
+            <div class="absolute inset-0 bg-gradient-to-t from-red-600 via-amber-400 to-yellow-100 rounded-full blur-[0.8px] flame-anim shadow-[0_0_16px_#e67300]"></div>
+            <div class="absolute top-1 left-1.5 w-1 h-3.5 bg-white rounded-full opacity-80"></div>
+          </div>
+          <div id="candleLeftSmoke" class="absolute top-0 hidden w-4 h-8 text-amber-200/40 pointer-events-none">
+            <svg viewBox="0 0 20 40" fill="currentColor"><path d="M10 40 Q4 30 11 20 Q17 10 9 0" stroke="rgba(210,180,140,0.5)" stroke-width="2" fill="none"/></svg>
+          </div>
+        </div>
+        <div class="w-1.5 h-2.5 bg-neutral-950"></div>
+        <div class="w-5 h-16 bg-gradient-to-b from-[#f2e6cf] via-[#ab9370] to-[#2e1d0f] rounded-t-sm shadow-md border-t border-amber-100/20"></div>
+        <div class="w-8 h-3 bg-gradient-to-r from-[#452b0c] via-[#a8752e] to-[#362108] rounded-t-sm"></div>
+        <div class="w-12 h-2.5 bg-gradient-to-r from-[#291704] via-[#754e19] to-[#1c0f02] rounded-sm shadow-lg"></div>
+      </div>
+
+      <div id="candleRight" class="candle-touch-zone flex flex-col items-center" title="Snuff or light candle">
+        <div class="relative w-6 h-8 flex items-end justify-center">
+          <div id="candleRightFlame" class="relative w-4 h-7">
+            <div class="absolute inset-0 bg-gradient-to-t from-red-600 via-amber-400 to-yellow-100 rounded-full blur-[0.8px] flame-anim shadow-[0_0_16px_#e67300]" style="animation-delay:-0.09s;"></div>
+            <div class="absolute top-1 left-1.5 w-1 h-3.5 bg-white rounded-full opacity-80"></div>
+          </div>
+          <div id="candleRightSmoke" class="absolute top-0 hidden w-4 h-8 text-amber-200/40 pointer-events-none">
+            <svg viewBox="0 0 20 40" fill="currentColor"><path d="M10 40 Q4 30 11 20 Q17 10 9 0" stroke="rgba(210,180,140,0.5)" stroke-width="2" fill="none"/></svg>
+          </div>
+        </div>
+        <div class="w-1.5 h-2.5 bg-neutral-950"></div>
+        <div class="w-5 h-16 bg-gradient-to-b from-[#f2e6cf] via-[#ab9370] to-[#2e1d0f] rounded-t-sm shadow-md border-t border-amber-100/20"></div>
+        <div class="w-8 h-3 bg-gradient-to-r from-[#452b0c] via-[#a8752e] to-[#362108] rounded-t-sm"></div>
+        <div class="w-12 h-2.5 bg-gradient-to-r from-[#291704] via-[#754e19] to-[#1c0f02] rounded-sm shadow-lg"></div>
+      </div>
+    </div>
+
+    <div id="boardContainer" class="ouija-board w-full rounded-lg p-4 sm:p-6 text-[#d4b382] select-none relative overflow-hidden aspect-[16/10.2] flex flex-col justify-between">
+      <svg class="absolute inset-0 w-full h-full pointer-events-none z-10" viewBox="0 0 1000 640" preserveAspectRatio="none">
+        <rect x="18" y="18" width="964" height="604" rx="4" class="board-engraving-line" stroke-opacity="0.45"/>
+        <path d="M 55,36 L 945,36 A 20,20 0 0,0 964,55 L 964,585 A 20,20 0 0,0 945,604 L 55,604 A 20,20 0 0,0 36,585 L 36,55 A 20,20 0 0,0 55,36 Z" class="board-engraving-line" stroke-opacity="0.6"/>
+        <g class="board-engraving-line" stroke-opacity="0.4">
+          <circle cx="50" cy="50" r="10"/><line x1="38" y1="50" x2="62" y2="50"/><line x1="50" y1="38" x2="50" y2="62"/>
+          <circle cx="950" cy="50" r="10"/><line x1="938" y1="50" x2="962" y2="50"/><line x1="950" y1="38" x2="950" y2="62"/>
+          <circle cx="50" cy="590" r="10"/><line x1="38" y1="590" x2="62" y2="590"/><line x1="50" y1="578" x2="50" y2="602"/>
+          <circle cx="950" cy="590" r="10"/><line x1="938" y1="590" x2="962" y2="590"/><line x1="950" y1="578" x2="950" y2="602"/>
+        </g>
+        <path d="M 410,132 Q 500,140 590,132" fill="none" stroke="#5a3818" stroke-width="1.3" stroke-linecap="round"/>
+        <circle cx="500" cy="136" r="2.2" fill="#8f6532"/>
+        <path d="M 405,532 Q 500,538 595,532" fill="none" stroke="#5a3818" stroke-width="1.3" stroke-linecap="round"/>
+      </svg>
+
+      <div class="absolute left-1/2 -translate-x-1/2 top-[10%] text-center pointer-events-none z-20">
+        <h1 class="font-ouija text-3xl sm:text-5xl md:text-6xl font-normal tracking-[0.24em] text-[#dfc08f] drop-shadow-[0_2px_4px_rgba(0,0,0,0.85)]">OUIJA</h1>
+      </div>
+
+      <div class="absolute left-[13%] sm:left-[17%] top-[12%] flex flex-col items-center z-20">
+        <div class="w-10 h-10 sm:w-14 sm:h-14 text-[#9c7542] relative">
+          <svg viewBox="0 0 100 100" fill="none" stroke="currentColor">
+            <circle cx="50" cy="50" r="22" stroke-width="2"/><circle cx="50" cy="50" r="28" stroke-width="1" stroke-dasharray="3,3"/>
+            <path d="M50,16 L50,8 M50,84 L50,92 M16,50 L8,50 M84,50 L92,50 M26,26 L20,20 M74,74 L80,80 M26,74 L20,80 M74,26 L80,20" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M42,46 Q50,49 58,46" stroke-width="1.5"/><path d="M45,56 Q50,59 55,56" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <span id="node-YES" data-char="YES" class="board-target font-ouija text-xl sm:text-3xl font-bold tracking-widest text-[#dfc08f] mt-1 static translate-x-0 translate-y-0">YES</span>
+      </div>
+
+      <div class="absolute right-[13%] sm:right-[17%] top-[12%] flex flex-col items-center z-20">
+        <div class="w-10 h-10 sm:w-14 sm:h-14 text-[#9c7542] relative">
+          <svg viewBox="0 0 100 100" fill="currentColor">
+            <path d="M60 18 C42 22 28 38 30 58 C32 76 46 90 64 92 C40 94 20 76 20 52 C20 28 38 14 60 18 Z" opacity="0.88"/>
+            <circle cx="48" cy="40" r="1.8" fill="#140803"/><circle cx="54" cy="52" r="1.4" fill="#140803"/><circle cx="44" cy="64" r="1.6" fill="#140803"/>
+          </svg>
+        </div>
+        <span id="node-NO" data-char="NO" class="board-target font-ouija text-xl sm:text-3xl font-bold tracking-widest text-[#dfc08f] mt-1 static translate-x-0 translate-y-0">NO</span>
+      </div>
+
+      <span id="node-A" data-char="A" class="board-target font-ouija text-lg sm:text-2xl md:text-3xl" style="left: 17.5%; top: 41%;">A</span>
+      <span id="node-B" data-char="B" class="board-target font-ouija text-lg sm:text-2xl md:text-3xl" style="left: 22.8%; top: 37.5%;">B</span>
+      <span id="node-C" data-char="C" class="board-target font-ouija text-lg sm:text-2xl md:text-3xl" style="left: 28.5%; top: 34.5%;">C</span>
+      <span id="node-D" data-char="D" class="board-target font-ouija text-lg sm:text-2xl md:text-3xl" style="left: 34.2%; top: 32.5%;">D</span>
+      <span id="node-E" data-char="E" class="board-target font-ouija text-lg sm:text-2xl md:text-3xl" style="left: 40.0%; top: 31.0%;">E</span>
+      <span id="node-F" data-char="F" class="board-target font-ouija text-lg sm:text-2xl md:text-3xl" style="left: 45.8%; top: 30.2%;">F</span>
+      <span id="node-G" data-char="G" class="board-target font-ouija text-lg sm:text-2xl md:text-3xl" style="left: 51.5%; top: 30.0%;">G</span>
+      <span id="node-H" data-char="H" class="board-target font-ouija text-lg sm:text-2xl md:text-3xl" style="left: 57.2%; top: 30.5%;">H</span>
+      <span id="node-I" data-char="I" class="board-target font-ouija text-lg sm:text-2xl md:text-3xl" style="left: 63.0%; top: 31.5%;">I</span>
+      <span id="node-J" data-char="J" class="board-target font-ouija text-lg sm:text-2xl md:text-3xl" style="left: 68.2%; top: 33.2%;">J</span>
+      <span id="node-K" data-char="K" class="board-target font-ouija text-lg sm:text-2xl md:text-3xl" style="left: 73.5%; top: 35.8%;">K</span>
+      <span id="node-L" data-char="L" class="board-target font-ouija text-lg sm:text-2xl md:text-3xl" style="left: 78.8%; top: 38.8%;">L</span>
+      <span id="node-M" data-char="M" class="board-target font-ouija text-lg sm:text-2xl md:text-3xl" style="left: 84.0%; top: 42.5%;">M</span>
+      <span id="node-N" data-char="N" class="board-target font-ouija text-lg sm:text-2xl md:text-3xl" style="left: 18.0%; top: 51.5%;">N</span>
+      <span id="node-O" data-char="O" class="board-target font-ouija text-lg sm:text-2xl md:text-3xl" style="left: 23.2%; top: 48.8%;">O</span>
+      <span id="node-P" data-char="P" class="board-target font-ouija text-lg sm:text-2xl md:text-3xl" style="left: 28.8%; top: 46.5%;">P</span>
+      <span id="node-Q" data-char="Q" class="board-target font-ouija text-lg sm:text-2xl md:text-3xl" style="left: 34.5%; top: 45.2%;">Q</span>
+      <span id="node-R" data-char="R" class="board-target font-ouija text-lg sm:text-2xl md:text-3xl" style="left: 40.2%; top: 44.5%;">R</span>
+      <span id="node-S" data-char="S" class="board-target font-ouija text-lg sm:text-2xl md:text-3xl" style="left: 45.8%; top: 44.5%;">S</span>
+      <span id="node-T" data-char="T" class="board-target font-ouija text-lg sm:text-2xl md:text-3xl" style="left: 54.2%; top: 44.5%;">T</span>
+      <span id="node-U" data-char="U" class="board-target font-ouija text-lg sm:text-2xl md:text-3xl" style="left: 59.8%; top: 44.5%;">U</span>
+      <span id="node-V" data-char="V" class="board-target font-ouija text-lg sm:text-2xl md:text-3xl" style="left: 65.5%; top: 45.5%;">V</span>
+      <span id="node-W" data-char="W" class="board-target font-ouija text-lg sm:text-2xl md:text-3xl" style="left: 71.2%; top: 47.2%;">W</span>
+      <span id="node-X" data-char="X" class="board-target font-ouija text-lg sm:text-2xl md:text-3xl" style="left: 76.8%; top: 49.5%;">X</span>
+      <span id="node-Y" data-char="Y" class="board-target font-ouija text-lg sm:text-2xl md:text-3xl" style="left: 82.2%; top: 52.0%;">Y</span>
+      <span id="node-Z" data-char="Z" class="board-target font-ouija text-lg sm:text-2xl md:text-3xl" style="left: 87.0%; top: 54.8%;">Z</span>
+
+      <div class="absolute left-1/2 -translate-x-1/2 top-[66%] flex items-center justify-center gap-3 sm:gap-6 md:gap-8 z-20">
+        <span id="node-1" data-char="1" class="board-target font-ouija text-base sm:text-xl md:text-2xl static translate-x-0 translate-y-0">1</span>
+        <span id="node-2" data-char="2" class="board-target font-ouija text-base sm:text-xl md:text-2xl static translate-x-0 translate-y-0">2</span>
+        <span id="node-3" data-char="3" class="board-target font-ouija text-base sm:text-xl md:text-2xl static translate-x-0 translate-y-0">3</span>
+        <span id="node-4" data-char="4" class="board-target font-ouija text-base sm:text-xl md:text-2xl static translate-x-0 translate-y-0">4</span>
+        <span id="node-5" data-char="5" class="board-target font-ouija text-base sm:text-xl md:text-2xl static translate-x-0 translate-y-0">5</span>
+        <span id="node-6" data-char="6" class="board-target font-ouija text-base sm:text-xl md:text-2xl static translate-x-0 translate-y-0">6</span>
+        <span id="node-7" data-char="7" class="board-target font-ouija text-base sm:text-xl md:text-2xl static translate-x-0 translate-y-0">7</span>
+        <span id="node-8" data-char="8" class="board-target font-ouija text-base sm:text-xl md:text-2xl static translate-x-0 translate-y-0">8</span>
+        <span id="node-9" data-char="9" class="board-target font-ouija text-base sm:text-xl md:text-2xl static translate-x-0 translate-y-0">9</span>
+        <span id="node-0" data-char="0" class="board-target font-ouija text-base sm:text-xl md:text-2xl static translate-x-0 translate-y-0">0</span>
+      </div>
+
+      <div class="absolute left-1/2 -translate-x-1/2 bottom-[10.5%] text-center z-20">
+        <div id="node-GOODBYE" data-char="GOODBYE" class="board-target font-ouija text-2xl sm:text-4xl md:text-5xl tracking-[0.22em] text-[#dfc08f] static translate-x-0 translate-y-0">GOOD BYE</div>
+      </div>
+
+      <div id="node-HOME" class="absolute left-1/2 top-[47%] -translate-x-1/2 -translate-y-1/2 w-4 h-4 pointer-events-none opacity-0"></div>
+
+      <div id="planchette" class="touch-none select-none">
+        <svg viewBox="0 0 100 130" class="w-full h-full drop-shadow-[0_16px_28px_rgba(0,0,0,0.95)]">
+          <defs>
+            <radialGradient id="planchetteWood" cx="48%" cy="42%" r="65%">
+              <stop offset="0%" stop-color="#542810"/><stop offset="50%" stop-color="#2c1205"/><stop offset="90%" stop-color="#160802"/><stop offset="100%" stop-color="#090301"/>
+            </radialGradient>
+            <linearGradient id="planchetteBrassEdge" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#996f33"/><stop offset="50%" stop-color="#4f3214"/><stop offset="100%" stop-color="#241407"/>
+            </linearGradient>
+            <radialGradient id="lensAperture" cx="45%" cy="45%" r="60%">
+              <stop offset="0%" stop-color="rgba(255,255,255,0.18)"/><stop offset="50%" stop-color="rgba(230,200,160,0.03)"/><stop offset="95%" stop-color="rgba(30,18,8,0.2)"/><stop offset="100%" stop-color="rgba(15,8,3,0.4)"/>
+            </radialGradient>
+          </defs>
+          <path d="M 50,6 C 72,28 92,62 90,98 C 88,118 72,125 50,118 C 28,125 12,118 10,98 C 8,62 28,28 50,6 Z" fill="url(#planchetteWood)" stroke="url(#planchetteBrassEdge)" stroke-width="1.8"/>
+          <path d="M 50,14 C 68,34 84,65 82,95 C 80,110 68,116 50,111 C 32,116 20,110 18,95 C 16,65 32,34 50,14 Z" fill="none" stroke="#784e20" stroke-width="1.0" stroke-opacity="0.75"/>
+          <circle cx="50" cy="18" r="2.2" fill="#a67c3b" stroke="#1c0b02" stroke-width="0.8"/>
+          <circle cx="26" cy="106" r="2.2" fill="#a67c3b" stroke="#1c0b02" stroke-width="0.8"/>
+          <circle cx="74" cy="106" r="2.2" fill="#a67c3b" stroke="#1c0b02" stroke-width="0.8"/>
+          <circle cx="50" cy="72" r="21" fill="none" stroke="#855f26" stroke-width="1.5"/>
+          <circle cx="50" cy="72" r="18" fill="none" stroke="#3b240c" stroke-width="1.0"/>
+          <circle cx="50" cy="72" r="17.5" fill="url(#lensAperture)"/>
+          <circle cx="50" cy="72" r="8.5" fill="none" stroke="rgba(215, 175, 100, 0.5)" stroke-width="0.75"/>
+          <line x1="50" y1="58" x2="50" y2="86" stroke="rgba(215, 175, 100, 0.45)" stroke-width="0.75" stroke-dasharray="1.5,1.5"/>
+          <line x1="36" y1="72" x2="64" y2="72" stroke="rgba(215, 175, 100, 0.45)" stroke-width="0.75" stroke-dasharray="1.5,1.5"/>
+          <circle cx="50" cy="72" r="1.5" fill="#dfb368"/>
+          <ellipse cx="44" cy="65" rx="5" ry="2.5" transform="rotate(-35 44 65)" fill="rgba(255,255,255,0.22)"/>
+        </svg>
+      </div>
+    </div>
+  </main>
+
+  <footer class="relative z-30 w-full max-w-xl pb-2 sm:pb-4 px-3">
+    <div class="calling-slip rounded-md p-3 sm:p-4 text-[#241205]">
+      <div class="flex items-center justify-between gap-2 border-b border-[#5a3818]/40 pb-1 mb-2">
+        <span class="font-script text-lg sm:text-xl text-[#311604] leading-none">Inquire of the silence...</span>
+        <svg class="w-4 h-4 text-[#4a2b10]/80 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M21 2C21 2 15 3 11 7C7 11 6 15 6 15L2 19L5 22L9 18C9 18 13 17 17 13C21 9 22 3 22 3L21 2ZM7.5 16.5L4.5 19.5L4 19L5 18L4.5 17.5L5.5 16.5L7.5 16.5Z"/>
+        </svg>
+      </div>
+
+      <div id="manifestedArea" class="pb-2 mb-2 border-b border-[#5a3818]/20 flex flex-col items-center justify-center text-center">
+        <span id="manifestedLabel" class="text-[9px] sm:text-[10px] font-fell uppercase tracking-[0.25em] text-[#4d2c0e]/75">Communing with the ether</span>
+        <div id="manifestedAnswer" class="font-ouija text-base sm:text-xl font-black tracking-widest text-[#8a1313] mt-0.5 filter drop-shadow-[0_1px_1px_rgba(255,255,255,0.3)] min-h-[1.75rem] flex items-center justify-center flex-wrap gap-x-1">
+          <span class="text-xs sm:text-sm font-fell text-[#4d2c0e]/60 italic tracking-normal">Awaiting inquiry...</span>
+        </div>
+      </div>
+      
+      <div id="inputRow" class="flex items-center gap-2">
+        <input id="questionInput" type="text" maxlength="120" placeholder="Whisper thy question and press Enter..." class="w-full bg-transparent border-none text-[#1e0d02] font-fell text-sm sm:text-base placeholder-[#5c3e21]/75 focus:outline-none" autocomplete="off"/>
+        <button id="inquireBtn" class="opacity-80 hover:opacity-100 p-1 text-[#311604] transition-transform active:scale-95 flex-shrink-0" title="Inquire">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M5 13h11.86l-5.43 5.43 1.42 1.42L21.14 12l-8.29-8.85-1.42 1.42L16.86 11H5v2z"/></svg>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
