@@ -1,20 +1,25 @@
 # E-Ouija
 
-A real ouijo board
+A lightweight browser-based Ouija board.
 
-1. **Clone the Repository:**
-   
-```
-https://github.com/rudrap2009/e-ouija.git
+## What it is
+
+E-Ouija is a simple web app that lets you move a planchette around a board and ask yes/no-style questions in the browser.
+
+## Run locally
+
+```bash
+git clone https://github.com/rudrap2009/e-ouija.git
 cd e-ouija
 ```
 
-2. **Open ```index.html``` in your browser.**
+Then open `index.html` in your browser.
+
+No build step or install is required.
 
 ## Demo
 
-Link = [e-ouija](https://e-ouija.22web.org)
-
+Live demo: https://e-ouija.22web.org
 
 ## License
 
