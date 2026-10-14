@@ -4,21 +4,24 @@ A lightweight browser-based Ouija board.
 
 ## What it is
 
-E-Ouija is a playful, browser-based spirit-board inspired by classic Ouija experiences. It lets you move a planchette around a board ask simple yes-or-no questions and explore the idea of a digital séance in a fun, lightweight way. The experience is intentionally more whimsical than realistic: instead of trying to simulate a supernatural system, it focuses on the mood of a casual, interactive spirit-board experiment.
+It’s just a fun, lightweight digital Ouija board that runs right in your web browser. You type in a yes or no question, watch the planchette move around, and enjoy a casual, slightly spooky vibe.
 
-The project is intentionally simple: it runs entirely in the browser with no backend, no database and no install step required. Everything is client-side, so you can open the app and start experimenting immediately. It is designed as a quick, low-friction demo that is easy to run, easy to understand and easy to modify.
+There's no backend, no database and nothing to install. Just open index.html and start playing.
+
 
 ## Features
 
-- Simple browser-based Ouija-style interaction
-- Planchette movement across the board
-- Yes-or-no question flow
-- No backend or persistent data required
-- Instant local use by opening `index.html`
+- Classic spirit-board style interaction in your browser
+
+- Smooth planchette movement
+
+- Simple yes-or-no question flow
+
+- Zero setup or installation required
 
 ## Motivation
 
-This project was created to explore how the nostalgia and interactivity of a classic Ouija board could be reimagined in a digital, browser-native form. Rather than attempting a serious paranormal simulation, it embraces the playful, mysterious atmosphere of a spirit-board as an interactive web experience. The goal was to create something that is quick to load, fun to interact with and demonstrates that not all web projects need complex infrastructure—sometimes the simplest approach is the most engaging.
+I wanted to see what a digital Ouija board would look like as a quick, zero-friction web toy. It’s not trying to be a serious paranormal simulator—just a fun, simple project to remind me that web apps don't always need massive infrastructure to be entertaining.
 
 ## Tools
 
