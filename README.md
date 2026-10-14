@@ -21,7 +21,7 @@ There's no backend, no database and nothing to install. Just open index.html and
 
 ## Motivation
 
-I wanted to see what a digital Ouija board would look like as a quick, zero-friction web toy. It’s not trying to be a serious paranormal simulator—just a fun, simple project to remind me that web apps don't always need massive infrastructure to be entertaining.
+I wanted to see what a digital Ouija board would look like as a quick, zero-friction web toy. It’s not trying to be a serious paranormal simulator just a fun, simple project to remind me that web apps don't always need massive infrastructure to be entertaining.
 
 ## Tools
 
